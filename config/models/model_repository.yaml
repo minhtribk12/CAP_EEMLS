@@ -1,0 +1,545 @@
+models:
+  b1_general:
+    base_model: b1
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 5.0
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b1
+  b1_pedestrian:
+    base_model: b1
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 5.0
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b1
+  b2_cyclist:
+    base_model: b2
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 9.3
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b2
+  b2_general:
+    base_model: b2
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 9.3
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b2
+  b3_general:
+    base_model: b3
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 14.0
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b3
+  b3_motorcycle:
+    base_model: b3
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 14.0
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b3
+  b4_car:
+    base_model: b4
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 32.8
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b4
+  b4_general:
+    base_model: b4
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 32.8
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b4
+  b5_general:
+    base_model: b5
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 46.9
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b5
+  b5_truck:
+    base_model: b5
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 46.9
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b5
+  b6_bus:
+    base_model: b6
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 102.5
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b6
+  b6_general:
+    base_model: b6
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 102.5
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b6
+  b7_general:
+    base_model: b7
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 346.6
+    normalization_mean:
+    - 0.5
+    - 0.5
+    - 0.5
+    normalization_std:
+    - 0.5
+    - 0.5
+    - 0.5
+    variant_of: b7
+  b7_pedestrian:
+    base_model: b7
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 346.6
+    normalization_mean:
+    - 0.5
+    - 0.5
+    - 0.5
+    normalization_std:
+    - 0.5
+    - 0.5
+    - 0.5
+    variant_of: b7
+  b8_car:
+    base_model: b8
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 553.5
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b8
+  b8_general:
+    base_model: b8
+    classes:
+    - pedestrian
+    - cyclist
+    - motorcycle
+    - car
+    - truck
+    - bus
+    - traffic_light
+    - traffic_sign
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    input_height: 224
+    input_width: 224
+    memory_mb: 553.5
+    normalization_mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    normalization_std:
+    - 0.229
+    - 0.224
+    - 0.225
+    variant_of: b8

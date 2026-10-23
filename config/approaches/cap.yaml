@@ -1,0 +1,8 @@
+kind: cap
+max_ensemble_size: 3
+evaluation_window: 500
+initial_switching_margin: 0.25
+contributions_before_margin: 30
+prior_precision: 1.0
+noise_variance: 1.0
+night_confidence_drop: 0.1

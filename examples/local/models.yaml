@@ -1,0 +1,42 @@
+base_models:
+  b1:
+    name: mnasnet_100
+    hugging_face_id: onnxmodelzoo/mnasnet_100_Opset17
+    onnx_file: mnasnet_100_Opset17.onnx
+    sha256: 0c3f9bc44239843585bebfa9ead904173e7b95766c4b77b432e1afe660dc2915
+  b2:
+    name: lcnet_100
+    hugging_face_id: onnxmodelzoo/lcnet_100_Opset17
+    onnx_file: lcnet_100_Opset17.onnx
+    sha256: 46d0bfe38a99bb6c21b1ebeb4f8e6dc0814e6306cbf7f2d35baaeeda8885a9b9
+  b3:
+    name: ghostnet_100
+    hugging_face_id: onnxmodelzoo/ghostnet_100_Opset17
+    onnx_file: ghostnet_100_Opset17.onnx
+    sha256: 6b1e81d5a8f948d4da5b7c169cac34f09b29fd80eaa2a841684fd300c3fd8e2d
+  b4:
+    name: resnet26d
+    hugging_face_id: onnxmodelzoo/resnet26d_Opset17
+    onnx_file: resnet26d_Opset17.onnx
+    sha256: d226d614b8a5e479bd8a978473db95f789f070c292014b18ab1e3ae8ebc27972
+  b5:
+    name: regnetx_032
+    hugging_face_id: onnxmodelzoo/regnetx_032_Opset17
+    onnx_file: regnetx_032_Opset17.onnx
+    sha256: f489600d374e941cf301c36b3658a658e8c513f06d201529afed5d77314e33a7
+  b6:
+    name: regnety_032
+    hugging_face_id: onnxmodelzoo/regnety_032_Opset17
+    onnx_file: regnety_032_Opset17.onnx
+    sha256: e5013196239de16b403b9a63eefc158dd666a039f7fa9749904ca78726673da9
+  b7:
+    name: vit_small_patch16_224
+    hugging_face_id: onnxmodelzoo/vit_small_patch16_224_Opset17
+    onnx_file: vit_small_patch16_224_Opset17.onnx
+    sha256: 43b445cac824d0d4b910927ed78c83c5f639b504edcd817413d80d6912090906
+  b8:
+    name: regnety_160
+    hugging_face_id: onnxmodelzoo/regnety_160_Opset17
+    onnx_file: regnety_160_Opset17.onnx
+    sha256: b30a8df82aa4bca6f82b89034247c43566b15cb981b049bcd1a8df1bc817cc49
+models: {}

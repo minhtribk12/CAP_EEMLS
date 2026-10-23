@@ -1,0 +1,67 @@
+cdms:
+  general_accuracy:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: General accuracy
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              observed: true
+  per_class_accuracy:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy per class
+    specification:
+      function: ratio
+      group_by: true_label
+      inputs:
+        - function: count
+          scopes:
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              observed: true
+  response_time_ms:
+    measured: per_window
+    window: 500
+    unit: milliseconds
+    description: Mean response time
+    specification:
+      function: average
+      attribute: response_time_ms
+  response_time_p95_ms:
+    measured: per_window
+    window: 500
+    unit: milliseconds
+    description: 95th percentile response time
+    specification:
+      function: percentile
+      attribute: response_time_ms
+      percentile_value: 95
+  throughput_per_s:
+    measured: per_window
+    window: 500
+    unit: queries_per_second
+    description: Throughput
+    specification:
+      function: average
+      attribute: throughput_rps
+  cost_per_1k_queries:
+    measured: per_window
+    window: 500
+    unit: cost_per_1k
+    description: Cost per 1000 queries
+    specification:
+      function: average
+      attribute: cost_per_1k

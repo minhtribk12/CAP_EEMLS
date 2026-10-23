@@ -1,0 +1,138 @@
+[project]
+name = "eemls"
+version = "1.0.0"
+description = "Ensemble ML serving on the edge with CDM-adaptive ensemble selection"
+authors = [
+    { name = "Minh-Tri Nguyen" },
+    { name = "Hong-Linh Truong" },
+]
+license = "Apache-2.0"
+requires-python = ">=3.11,<3.13"
+
+dependencies = [
+    "pydantic (>=2.11.7,<3.0.0)",
+    "pydantic-core (>=2.50.1,<3.0.0)",
+    "pyyaml (>=6.0.3,<7.0.0)",
+    "prometheus-client (>=0.21.1,<0.22.0)",
+    "fastapi (>=0.136.1,<0.137.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "paho-mqtt (>=2.1.0,<3.0.0)",
+    "anyio (>=4.15.1,<5.0.0)",
+]
+
+[project.optional-dependencies]
+database = ["psycopg[binary,pool] (>=3.2.3,<4.0.0)"]
+approaches = ["numpy (>=2.0.0,<3.0.0)"]
+testing = ["pillow (>=11.0.0,<13.0.0)", "pytest (>=9.0.3,<10.0.0)"]
+
+[project.entry-points."eemls.approaches"]
+cap = "eemls.ensemble_optimization.approaches.cap.approach:approach"
+scale_reduction = "eemls.ensemble_optimization.approaches.baselines.scale_reduction:approach"
+sneakpeek = "eemls.ensemble_optimization.approaches.baselines.sneakpeek:approach"
+axiomvision = "eemls.ensemble_optimization.approaches.baselines.axiomvision:approach"
+cocktail = "eemls.ensemble_optimization.approaches.baselines.cocktail:approach"
+frugalml = "eemls.ensemble_optimization.approaches.baselines.frugalml:approach"
+keep_the_ensemble = "eemls.ensemble_optimization.approaches.baselines.keep_the_ensemble:approach"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
+packages = [{ include = "eemls", from = "src" }]
+
+[tool.poetry.group.dev.dependencies]
+# Edits exported graphs to build the model pool.
+onnx = "^1.23.0"
+pytest = "^9.0.3"
+pytest-cov = "^7.1.0"
+ruff = "0.12.12"
+mypy = "^1.14.0"
+pre-commit = "^4.2.0"
+codespell = "^2.4.1"
+types-pyyaml = "^6.0.12"
+pytest-asyncio = "^1.3.0"
+onnxruntime = ">=1.31.0,<2.0.0"
+uvicorn = ">=0.38.0,<0.39.0"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src", "tools"]
+addopts = "-ra -q --strict-markers --strict-config --import-mode=importlib"
+xfail_strict = true
+asyncio_mode = "auto"
+filterwarnings = ["error"]
+markers = [
+    "slow: takes more than a few seconds",
+    "integration: needs a running dependency such as Postgres or the broker",
+    "requires_gpu: needs a CUDA or TensorRT device",
+    "requires_docker: needs a Docker daemon or a cluster",
+]
+
+[tool.ruff]
+line-length = 100
+src = [
+    "src",
+    "application/*/src",
+    "tools/src",
+    "tests",
+    "tools",
+]
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "F", "E", "W", "N", "I", "UP", "C4", "ISC", "B", "SIM", "PGH", "RUF", "S",
+    "ERA", "FIX", "TD", "TID",
+]
+# ISC001 is the single exemption: ruff-format already enforces it and the two conflict.
+ignore = ["ISC001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["eemls"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"simulation".msg = "complete_source imports nothing from the simulation tree"
+"rohe_rl".msg = "complete_source imports nothing from the rohe_rl tree"
+"experiment".msg = "complete_source imports nothing from the experiment tree"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+"tests/unit/test_toolchain.py" = ["S603", "S607"]
+"tests/unit/test_service_images.py" = ["S603", "S607"]
+"tests/unit/test_dependency_direction.py" = ["S603"]
+# The integration fixture starts a database container with a literal command.
+"tests/conftest.py" = ["S310", "S603", "S607"]
+# The framework database fixture starts PostgreSQL with a literal command and test password.
+"tests/framework/metrics_database/conftest.py" = ["S105", "S603", "S607"]
+# The image test builds and starts the service images with literal commands.
+"tests/e2e/test_service_images.py" = ["S310", "S603", "S607"]
+# The deployment test checks the files with literal Docker and kubectl commands.
+"tests/e2e/test_deploy_files.py" = ["S603", "S607"]
+# The one-host test drives make and reads the run through psql, with literal commands.
+"tests/e2e/test_single_host.py" = ["S603", "S607", "S608"]
+# The one-host and Docker helpers drive make and docker with literal commands.
+"tests/support/one_host.py" = ["S603", "S607"]
+"tests/support/docker.py" = ["S603", "S607"]
+# The experiment test drives make and reads the rows it wrote, with literal commands.
+"tests/e2e/test_experiment.py" = ["S603", "S607"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+python_version = "3.11"
+mypy_path = "src:tools"
+files = ["src", "tests", "tools/*.py"]
+namespace_packages = true
+explicit_package_bases = true
+strict = true
+warn_unreachable = true
+
+# onnxruntime ships no type information.
+[[tool.mypy.overrides]]
+module = ["onnxruntime", "onnxruntime.*"]
+ignore_missing_imports = true
+
+[tool.codespell]
+skip = "./LICENSE,./poetry.lock,./.venv,./runs,./models,./data"

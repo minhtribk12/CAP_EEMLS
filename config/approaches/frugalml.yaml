@@ -1,0 +1,6 @@
+kind: frugalml
+max_ensemble_size: 3
+evaluation_window: 500
+budget_per_1k: 20.0
+quality_level: 0.8
+failing_intervals: 3

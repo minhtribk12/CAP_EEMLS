@@ -1,0 +1,130 @@
+dominant_classes:
+- pedestrian
+- cyclist
+- motorcycle
+- car
+- truck
+- bus
+tail_classes:
+- traffic_light
+- traffic_sign
+- traffic_cone
+- road_bump
+- road_curve
+- car_stop_sign
+- guardrail
+- train
+- boat
+- airplane
+- dog
+- cat
+- bird
+conditions:
+- day
+- night
+image_size: 224
+images_per_dominant_class: 2300
+images_per_tail_class: 500
+train_fraction: 0.8
+blur:
+  sigma: 1.6
+  kernel: 7
+sources:
+  imagenet:
+    citation: deng2009imagenet
+    url: https://www.image-net.org/
+    license: ImageNet terms of access, research use
+    conditions:
+    - day
+    contributes:
+    - car
+    - truck
+    - bus
+    - motorcycle
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    label_map:
+      n02958343: car
+      n04285008: car
+      n02930766: car
+      n03770679: car
+      n03100240: car
+      n04467665: truck
+      n04146614: bus
+      n03790512: motorcycle
+      n03785016: motorcycle
+      n03791053: motorcycle
+      n04468005: train
+      n02917067: train
+      n04310018: train
+      n03272562: train
+      n02951358: boat
+      n02690373: airplane
+      n02106662: dog
+      n02123045: cat
+      n01530575: bird
+  open_images:
+    citation: kuznetsova2020open
+    url: https://storage.googleapis.com/openimages/web/index.html
+    license: CC BY 4.0 annotations, images under their own licenses
+    conditions:
+    - day
+    contributes:
+    - pedestrian
+    - cyclist
+    - car
+    - truck
+    - bus
+    - motorcycle
+    - traffic_light
+    - traffic_sign
+    - train
+    - boat
+    - airplane
+    - dog
+    - cat
+    - bird
+    label_map:
+      Person: pedestrian
+      Bicycle: cyclist
+      Car: car
+      Truck: truck
+      Bus: bus
+      Motorcycle: motorcycle
+      Traffic light: traffic_light
+      Traffic sign: traffic_sign
+      Train: train
+      Boat: boat
+      Aircraft: airplane
+      Dog: dog
+      Cat: cat
+      Bird: bird
+  multispectral:
+    citation: karasawa2017multispectral
+    url: https://www.mi.t.u-tokyo.ac.jp/static/projects/mil_multispectral/
+    license: Research use, see the dataset page
+    conditions:
+    - day
+    - night
+    contributes:
+    - pedestrian
+    - cyclist
+    - car
+    - traffic_cone
+    - road_bump
+    - road_curve
+    - car_stop_sign
+    - guardrail
+    label_map:
+      person: pedestrian
+      bike: cyclist
+      car: car
+      color_cone: traffic_cone
+      bump: road_bump
+      curve: road_curve
+      car_stop: car_stop_sign
+      guardrail: guardrail

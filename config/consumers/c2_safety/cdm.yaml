@@ -1,0 +1,217 @@
+cdms:
+  accuracy_pedestrian:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy on pedestrian queries
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: pedestrian
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: pedestrian
+  accuracy_cyclist:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy on cyclist queries
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: cyclist
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: cyclist
+  accuracy_motorcycle:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy on motorcycle queries
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: motorcycle
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: motorcycle
+  accuracy_car:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy on car queries
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: car
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: car
+  accuracy_truck:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy on truck queries
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: truck
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: truck
+  accuracy_bus:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy on bus queries
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: bus
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: bus
+  accuracy_pedestrian_cyclist_motorcycle:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy on the prioritized classes
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: true_label
+              one_of:
+                - pedestrian
+                - cyclist
+                - motorcycle
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              one_of:
+                - pedestrian
+                - cyclist
+                - motorcycle
+  miss_rate_cyclist_as_motorcycle:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Cyclists read as motorcycles
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: cyclist
+            - attribute: predicted_label
+              value: motorcycle
+        - function: count
+          scopes:
+            - attribute: true_label
+              value: cyclist
+  general_accuracy:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: General accuracy
+    specification:
+      function: ratio
+      inputs:
+        - function: count
+          scopes:
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              observed: true
+  per_class_accuracy:
+    measured: per_window
+    window: 500
+    unit: ratio
+    description: Accuracy per class
+    specification:
+      function: ratio
+      group_by: true_label
+      inputs:
+        - function: count
+          scopes:
+            - attribute: predicted_label
+              same_as: true_label
+        - function: count
+          scopes:
+            - attribute: true_label
+              observed: true
+  response_time_ms:
+    measured: per_window
+    window: 500
+    unit: milliseconds
+    description: Mean response time
+    specification:
+      function: average
+      attribute: response_time_ms
+  response_time_p95_ms:
+    measured: per_window
+    window: 500
+    unit: milliseconds
+    description: 95th percentile response time
+    specification:
+      function: percentile
+      attribute: response_time_ms
+      percentile_value: 95
+  throughput_per_s:
+    measured: per_window
+    window: 500
+    unit: queries_per_second
+    description: Throughput
+    specification:
+      function: average
+      attribute: throughput_rps
+  cost_per_1k_queries:
+    measured: per_window
+    window: 500
+    unit: cost_per_1k
+    description: Cost per 1000 queries
+    specification:
+      function: average
+      attribute: cost_per_1k

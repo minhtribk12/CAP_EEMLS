@@ -1,0 +1,76 @@
+[project]
+name = "eemls-data-hub"
+version = "1.0.0"
+description = "Data hub: serves the images of the prepared dataset by id"
+authors = [
+    { name = "Minh-Tri Nguyen" },
+    { name = "Hong-Linh Truong" },
+]
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11,<3.13"
+
+dependencies = [
+    "eemls==1.0.0",
+    "pydantic (>=2.11.7,<3.0.0)",
+    "fastapi (>=0.136.1,<0.137.0)",
+    "uvicorn (>=0.38.0,<0.39.0)",
+]
+
+[project.scripts]
+eemls-data-hub = "eemls_data_hub.main:main"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
+packages = [{ include = "eemls_data_hub", from = "src" }]
+include = [{ path = "src/eemls_data_hub/py.typed", format = ["sdist", "wheel"] }]
+
+[tool.poetry.dependencies]
+eemls = { path = "../..", develop = false }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.3"
+pytest-cov = "^7.1.0"
+ruff = "0.12.12"
+mypy = "^1.14.0"
+pytest-asyncio = "^1.3.0"
+pillow = ">=11.0.0,<13.0.0"
+httpx = ">=0.28.1,<0.29.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q --strict-markers --strict-config --import-mode=importlib"
+xfail_strict = true
+asyncio_mode = "auto"
+filterwarnings = ["error"]
+markers = [
+    "slow: takes more than a few seconds",
+    "integration: needs a running dependency such as Postgres or the broker",
+]
+
+[tool.ruff]
+extend = "../../pyproject.toml"
+
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/**" = ["S101"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+python_version = "3.11"
+mypy_path = "src"
+files = ["src", "tests"]
+namespace_packages = true
+explicit_package_bases = true
+strict = true
+warn_unreachable = true
+
+[tool.coverage.run]
+source = ["src/eemls_data_hub"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true

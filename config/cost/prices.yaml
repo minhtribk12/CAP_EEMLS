@@ -1,0 +1,95 @@
+charge_unit: per_1k_queries
+energy_price_per_kwh: 0.20
+device_lifetime_years: 3
+eur_per_cost_unit: 0.00001
+devices:
+  precision_5820:
+    hardware_price_eur: 2500.0
+    idle_power_watts: 60.0
+    peak_power_watts: 300.0
+    count: 1
+    memory_gb: 32
+    accelerator: 1024 CUDA cores
+    execution_provider: x86_gpu
+    source: Dell Precision 5820 technical guide, list price
+  hp_z240:
+    hardware_price_eur: 1200.0
+    idle_power_watts: 30.0
+    peak_power_watts: 180.0
+    count: 1
+    memory_gb: 16
+    accelerator: 640 CUDA cores
+    execution_provider: x86_gpu
+    source: HP Z240 QuickSpecs, list price
+  jetson_agx_orin:
+    hardware_price_eur: 1999.0
+    idle_power_watts: 15.0
+    peak_power_watts: 60.0
+    count: 1
+    memory_gb: 64
+    accelerator: 2048 CUDA, 64 Tensor cores
+    execution_provider: jetson
+    source: NVIDIA Jetson AGX Orin developer kit page, list price
+  jetson_agx_xavier:
+    hardware_price_eur: 699.0
+    idle_power_watts: 10.0
+    peak_power_watts: 30.0
+    count: 1
+    memory_gb: 16
+    accelerator: 512 CUDA, 64 Tensor cores
+    execution_provider: jetson
+    source: NVIDIA Jetson AGX Xavier datasheet, list price
+  jetson_orin_nano:
+    hardware_price_eur: 249.0
+    idle_power_watts: 5.0
+    peak_power_watts: 25.0
+    count: 4
+    memory_gb: 8
+    accelerator: 1024 CUDA, 32 Tensor cores
+    execution_provider: jetson
+    source: NVIDIA Jetson Orin Nano Super developer kit page, list price
+  jetson_nano:
+    hardware_price_eur: 149.0
+    idle_power_watts: 2.0
+    peak_power_watts: 10.0
+    count: 1
+    memory_gb: 4
+    accelerator: 128 CUDA cores
+    execution_provider: jetson
+    source: NVIDIA Jetson Nano developer kit page, list price
+  raspberry_pi5:
+    hardware_price_eur: 80.0
+    idle_power_watts: 3.0
+    peak_power_watts: 12.0
+    count: 1
+    memory_gb: 8
+    accelerator: null
+    execution_provider: arm_cpu
+    source: Raspberry Pi 5 product brief, list price
+  raspberry_pi4:
+    hardware_price_eur: 55.0
+    idle_power_watts: 2.7
+    peak_power_watts: 7.0
+    count: 4
+    memory_gb: 4
+    accelerator: null
+    execution_provider: arm_cpu
+    source: Raspberry Pi 4 product brief, list price
+  beelink_ser8:
+    hardware_price_eur: 599.0
+    idle_power_watts: 10.0
+    peak_power_watts: 65.0
+    count: 3
+    memory_gb: 32
+    accelerator: 12 Radeon cores
+    execution_provider: x86_cpu
+    source: Table 1 of the article, vendor list price
+  beelink_bt3:
+    hardware_price_eur: 200.0
+    idle_power_watts: 4.0
+    peak_power_watts: 12.0
+    count: 2
+    memory_gb: 4
+    accelerator: null
+    execution_provider: x86_cpu
+    source: Intel Atom x5-Z8350 specification, list price

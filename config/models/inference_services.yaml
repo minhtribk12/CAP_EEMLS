@@ -1,0 +1,70 @@
+autoscale:
+  enabled: true
+  max_replicas: 10
+  cpu_percent: 70
+  cooldown_s: 60
+services:
+  infer-b7-general-p5820:
+    model: b7_general
+    device_type: precision_5820
+    replicas: 1
+  infer-b7-pedestrian-z240:
+    model: b7_pedestrian
+    device_type: hp_z240
+    replicas: 1
+  infer-b8-general-agx-orin:
+    model: b8_general
+    device_type: jetson_agx_orin
+    replicas: 1
+  infer-b8-car-agx-xavier:
+    model: b8_car
+    device_type: jetson_agx_xavier
+    replicas: 1
+  infer-b6-general-agx-orin:
+    model: b6_general
+    device_type: jetson_agx_orin
+    replicas: 1
+  infer-b6-bus-ser8:
+    model: b6_bus
+    device_type: beelink_ser8
+    replicas: 1
+  infer-b4-general-orin-nano:
+    model: b4_general
+    device_type: jetson_orin_nano
+    replicas: 1
+  infer-b4-car-ser8:
+    model: b4_car
+    device_type: beelink_ser8
+    replicas: 1
+  infer-b5-general-orin-nano:
+    model: b5_general
+    device_type: jetson_orin_nano
+    replicas: 1
+  infer-b5-truck-pi5:
+    model: b5_truck
+    device_type: raspberry_pi5
+    replicas: 1
+  infer-b3-general-nano:
+    model: b3_general
+    device_type: jetson_nano
+    replicas: 1
+  infer-b3-motorcycle-pi4:
+    model: b3_motorcycle
+    device_type: raspberry_pi4
+    replicas: 1
+  infer-b2-general-pi4:
+    model: b2_general
+    device_type: raspberry_pi4
+    replicas: 1
+  infer-b2-cyclist-bt3:
+    model: b2_cyclist
+    device_type: beelink_bt3
+    replicas: 1
+  infer-b1-general-pi4:
+    model: b1_general
+    device_type: raspberry_pi4
+    replicas: 1
+  infer-b1-pedestrian-bt3:
+    model: b1_pedestrian
+    device_type: beelink_bt3
+    replicas: 1

@@ -1,0 +1,26 @@
+models/inference_services.yaml:
+  services:
+    infer-b1-general-pi4:
+      model: b1_general
+      device_type: raspberry_pi4
+      replicas: 2
+    infer-b1-pedestrian-bt3:
+      model: b1_pedestrian
+      device_type: beelink_bt3
+      replicas: 1
+consumers/c1_navigation/initial_ensemble.yaml:
+  members:
+    - infer-b1-general-pi4
+    - infer-b1-pedestrian-bt3
+consumers/c2_safety/initial_ensemble.yaml:
+  members:
+    - infer-b1-general-pi4
+    - infer-b1-pedestrian-bt3
+consumers/c3_surveillance/initial_ensemble.yaml:
+  members:
+    - infer-b1-general-pi4
+    - infer-b1-pedestrian-bt3
+consumers/c1_navigation/contract.yaml:
+  request_rate_per_s: 7.0
+services/control_plane.yaml:
+  member_timeout_ms: 2000

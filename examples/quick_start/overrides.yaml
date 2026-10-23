@@ -1,0 +1,68 @@
+models/model_repository.yaml:
+  models:
+    b1_imagenet:
+      base_model: b1
+      hugging_face_id: onnxmodelzoo/mnasnet_100_Opset17
+      onnx_file: mnasnet_100_Opset17.onnx
+      sha256: 0c3f9bc44239843585bebfa9ead904173e7b95766c4b77b432e1afe660dc2915
+      input_height: 224
+      input_width: 224
+      normalization_mean: [0.485, 0.456, 0.406]
+      normalization_std: [0.229, 0.224, 0.225]
+      memory_mb: 5.0
+      class_mapping: imagenet_class_mapping.yaml
+      variant_of: null
+    b2_imagenet:
+      base_model: b2
+      hugging_face_id: onnxmodelzoo/lcnet_100_Opset17
+      onnx_file: lcnet_100_Opset17.onnx
+      sha256: 46d0bfe38a99bb6c21b1ebeb4f8e6dc0814e6306cbf7f2d35baaeeda8885a9b9
+      input_height: 224
+      input_width: 224
+      normalization_mean: [0.485, 0.456, 0.406]
+      normalization_std: [0.229, 0.224, 0.225]
+      memory_mb: 9.3
+      class_mapping: imagenet_class_mapping.yaml
+      variant_of: null
+models/inference_services.yaml:
+  autoscale:
+    enabled: false
+    max_replicas: 10
+    cpu_percent: 70
+    cooldown_s: 60
+  services:
+    infer-b1-imagenet-pi4:
+      model: b1_imagenet
+      device_type: raspberry_pi4
+      replicas: 1
+    infer-b2-imagenet-bt3:
+      model: b2_imagenet
+      device_type: beelink_bt3
+      replicas: 1
+consumers/c1_navigation/initial_ensemble.yaml:
+  members:
+    - infer-b1-imagenet-pi4
+    - infer-b2-imagenet-bt3
+consumers/c2_safety/initial_ensemble.yaml:
+  members:
+    - infer-b1-imagenet-pi4
+    - infer-b2-imagenet-bt3
+consumers/c3_surveillance/initial_ensemble.yaml:
+  members:
+    - infer-b1-imagenet-pi4
+    - infer-b2-imagenet-bt3
+consumers/c1_navigation/contract.yaml:
+  request_rate_per_s: 5.0
+consumers/c2_safety/contract.yaml:
+  request_rate_per_s: 5.0
+consumers/c3_surveillance/contract.yaml:
+  request_rate_per_s: 5.0
+datasets/sources.yaml:
+  images_per_dominant_class: 20
+  images_per_tail_class: 10
+services/deployment.yaml:
+  image_tags:
+    x86_cpu: cpu-amd64
+    x86_gpu: cpu-amd64
+    arm_cpu: cpu-amd64
+    jetson: cpu-amd64

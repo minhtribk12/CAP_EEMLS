@@ -1,0 +1,11 @@
+host: broker
+port: 1883
+qos: 1
+keepalive_s: 30
+session_expiry_s: 300
+max_queued_results: 10000
+client_id_prefix: eemls
+reconnect_min_s: 0.5
+reconnect_max_s: 8.0
+shutdown_flush_s: 8.0
+instance_topic_prefix: eemls/instances

@@ -1,0 +1,47 @@
+models/inference_services.yaml:
+  services:
+    infer-b1-pedestrian-bt3:
+      model: b1_pedestrian
+      device_type: beelink_bt3
+      replicas: 1
+    infer-b2-cyclist-bt3:
+      model: b2_cyclist
+      device_type: beelink_bt3
+      replicas: 1
+    infer-b3-motorcycle-pi4:
+      model: b3_motorcycle
+      device_type: raspberry_pi4
+      replicas: 2
+    infer-b1-general-pi4:
+      model: b1_general
+      device_type: raspberry_pi4
+      replicas: 2
+    infer-b5-general-orin-nano:
+      model: b5_general
+      device_type: jetson_orin_nano
+      replicas: 4
+    infer-b3-general-nano:
+      model: b3_general
+      device_type: jetson_nano
+      replicas: 1
+consumers/c1_navigation/initial_ensemble.yaml:
+  members:
+  - infer-b5-general-orin-nano
+  - infer-b1-pedestrian-bt3
+  - infer-b2-cyclist-bt3
+consumers/c2_safety/initial_ensemble.yaml:
+  members:
+  - infer-b3-general-nano
+  - infer-b1-pedestrian-bt3
+  - infer-b3-motorcycle-pi4
+consumers/c3_surveillance/initial_ensemble.yaml:
+  members:
+  - infer-b5-general-orin-nano
+  - infer-b1-general-pi4
+  - infer-b2-cyclist-bt3
+consumers/c1_navigation/contract.yaml:
+  request_rate_per_s: 7.0
+consumers/c2_safety/contract.yaml:
+  request_rate_per_s: 7.0
+consumers/c3_surveillance/contract.yaml:
+  request_rate_per_s: 7.0

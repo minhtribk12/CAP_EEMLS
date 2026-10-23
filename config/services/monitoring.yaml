@@ -1,0 +1,27 @@
+enabled: true
+metrics_path: /metrics
+histogram_buckets_ms:
+  - 5
+  - 10
+  - 25
+  - 50
+  - 100
+  - 150
+  - 200
+  - 250
+  - 300
+  - 400
+  - 500
+  - 750
+  - 1000
+fast_histogram_buckets_ms:
+  - 0.05
+  - 0.1
+  - 0.25
+  - 0.5
+  - 1
+  - 2.5
+  - 5
+  - 10
+  - 25
+  - 50

@@ -1,0 +1,16 @@
+onnxruntime-gpu==1.31.0 \
+    --hash=sha256:b52998a075de27ff30e46a125001822541fa5b03f5d31398ab0e50789d80c51c
+nvidia-cublas==13.8.1.7 \
+    --hash=sha256:c11a27fd4379510e5b1f84b367a2514d1e52fe5cc13442117a0e0a1addee3cf2
+nvidia-cuda-nvrtc==13.4.92 \
+    --hash=sha256:5ce8c97b00b232c4f50c8c4b5a3b68cafee08bdb82ea86f2052ff01d03194f4a
+nvidia-cuda-runtime==13.4.92 \
+    --hash=sha256:9641f797da20ce1dd8e779b6e96d08cf9ba564cec8e8225458811ee26423f3a5
+nvidia-cudnn-cu13==9.27.0.42 \
+    --hash=sha256:9677e76f21862eb5da7ee5ed69d544738b2d8b5c3ce7e5ec125c5592e6cdbdc8
+nvidia-cufft==12.4.0.43 \
+    --hash=sha256:0e8385013596b112d29c9ce8c63dc575b308d77636c7169104e18714f03961a8
+nvidia-curand==10.4.4.72 \
+    --hash=sha256:25c3457ae7a224fdd484dab90b0fc5dc0e842fab5db3012afa4a5bd2af4eb7e5
+nvidia-nvjitlink==13.4.92 \
+    --hash=sha256:e0391f24ed94ec879b84e3da4d4ec320c879aff681f2c7a638462f7199284323

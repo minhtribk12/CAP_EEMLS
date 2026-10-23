@@ -1,0 +1,76 @@
+[project]
+name = "eemls-observation-service"
+version = "1.0.0"
+description = "Observation Service: stores the rows of a run and updates the profiles"
+authors = [
+    { name = "Minh-Tri Nguyen" },
+    { name = "Hong-Linh Truong" },
+]
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11,<3.13"
+
+dependencies = [
+    "eemls[database]==1.0.0",
+    "psycopg (>=3.2.3,<4.0.0)",
+    "pydantic (>=2.11.7,<3.0.0)",
+    "fastapi (>=0.136.1,<0.137.0)",
+    "uvicorn (>=0.38.0,<0.39.0)",
+]
+
+[project.scripts]
+eemls-observation-service = "eemls_observation_service.main:main"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
+packages = [{ include = "eemls_observation_service", from = "src" }]
+include = [{ path = "src/eemls_observation_service/py.typed", format = ["sdist", "wheel"] }]
+
+[tool.poetry.dependencies]
+eemls = { path = "../..", develop = false, extras = ["database"] }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.3"
+pytest-cov = "^7.1.0"
+ruff = "0.12.12"
+mypy = "^1.14.0"
+pytest-asyncio = "^1.3.0"
+httpx = ">=0.28.1,<0.29.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q --strict-markers --strict-config --import-mode=importlib"
+xfail_strict = true
+asyncio_mode = "auto"
+filterwarnings = ["error"]
+markers = [
+    "slow: takes more than a few seconds",
+    "integration: needs a running dependency such as Postgres or the broker",
+]
+
+[tool.ruff]
+extend = "../../pyproject.toml"
+
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/**" = ["S101"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+python_version = "3.11"
+mypy_path = "src"
+files = ["src", "tests"]
+namespace_packages = true
+explicit_package_bases = true
+strict = true
+warn_unreachable = true
+
+[tool.coverage.run]
+source = ["src/eemls_observation_service"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true

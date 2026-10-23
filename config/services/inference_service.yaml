@@ -1,0 +1,20 @@
+port: 8082
+max_concurrent_requests: 8
+session_threads: 2
+warmup_requests: 5
+number_format: float32
+providers:
+  jetson:
+    - CUDAExecutionProvider
+    - CPUExecutionProvider
+  x86_gpu:
+    - CUDAExecutionProvider
+    - CPUExecutionProvider
+  x86_cpu:
+    - CPUExecutionProvider
+  arm_cpu:
+    - CPUExecutionProvider
+image_cache_images: 256
+image_fetch_timeout_ms: 100
+max_image_bytes: 262144
+data_hub_url: http://data-hub:8081

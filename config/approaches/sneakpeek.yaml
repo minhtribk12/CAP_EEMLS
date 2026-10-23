@@ -1,0 +1,3 @@
+kind: sneakpeek
+max_ensemble_size: 3
+evaluation_window: 500

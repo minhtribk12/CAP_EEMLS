@@ -1,0 +1,13 @@
+host: 0.0.0.0
+port: 8080
+policy: cap
+contract: null
+max_ensemble_size: 3
+decision_interval_queries: 5
+periods_of_the_day: 6
+member_timeout_ms: 1000
+probe_fraction: 0.2
+profile_update_interval_s: 30
+max_concurrent_queries_per_consumer: 64
+data_hub_url: http://data-hub:8081
+result_topic_prefix: eemls/results

@@ -1,0 +1,10 @@
+control_plane_url: http://control-plane:8080
+data_hub_url: http://data-hub:8081
+decision_interval_queries: 5
+send_window: 100
+result_timeout_ms: 2000
+subscription_wait_s: 30
+reply_topic_prefix: eemls/results
+feedback_batch: 32
+tick_ms: 10
+metrics_port: 9103

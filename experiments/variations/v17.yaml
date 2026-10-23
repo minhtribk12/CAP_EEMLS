@@ -1,0 +1,72 @@
+base_models:
+  b3:
+    family: light_cnn
+    input_height: 224
+    input_width: 224
+    normalization_mean: [0.485, 0.456, 0.406]
+    normalization_std: [0.229, 0.224, 0.225]
+    weights_mb: 13.3
+  b5:
+    family: cnn
+    input_height: 224
+    input_width: 224
+    normalization_mean: [0.485, 0.456, 0.406]
+    normalization_std: [0.229, 0.224, 0.225]
+    weights_mb: 44.6
+  b6:
+    family: cnn
+    input_height: 224
+    input_width: 224
+    normalization_mean: [0.485, 0.456, 0.406]
+    normalization_std: [0.229, 0.224, 0.225]
+    weights_mb: 97.7
+  b9:
+    family: light_cnn
+    input_height: 224
+    input_width: 224
+    normalization_mean: [0.485, 0.456, 0.406]
+    normalization_std: [0.229, 0.224, 0.225]
+    weights_mb: 21.9
+  b12:
+    family: cnn
+    input_height: 224
+    input_width: 224
+    normalization_mean: [0.485, 0.456, 0.406]
+    normalization_std: [0.229, 0.224, 0.225]
+    weights_mb: 62.4
+  b13:
+    family: transformer
+    input_height: 224
+    input_width: 224
+    normalization_mean: [0.485, 0.456, 0.406]
+    normalization_std: [0.229, 0.224, 0.225]
+    weights_mb: 23.7
+  b14:
+    family: hybrid
+    input_height: 256
+    input_width: 256
+    normalization_mean: [0.0, 0.0, 0.0]
+    normalization_std: [1.0, 1.0, 1.0]
+    weights_mb: 9.4
+  b16:
+    family: mlp
+    input_height: 224
+    input_width: 224
+    normalization_mean: [0.485, 0.456, 0.406]
+    normalization_std: [0.229, 0.224, 0.225]
+    weights_mb: 61.5
+specialisms:
+  b3: [pedestrian, bus, cyclist]
+  b5: [car, bus, motorcycle]
+  b6: [truck, motorcycle, car]
+  b9: [cyclist, truck, pedestrian]
+  b12: [cyclist, bus, truck]
+  b13: [bus, truck, cyclist]
+  b14: [motorcycle, truck, pedestrian]
+  b16: [bus, pedestrian, motorcycle]
+variations_per_base_model: 2
+train_images_per_class: 250
+specialist_class_weight: 1000.0
+frozen_base_model: true
+seed: 17
+class_weight_floor: 0.0

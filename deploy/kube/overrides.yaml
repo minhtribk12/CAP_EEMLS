@@ -1,0 +1,33 @@
+models/inference_services.yaml:
+  services:
+    infer-b1-pedestrian-bt3:
+      model: b1_pedestrian
+      device_type: beelink_bt3
+      replicas: 1
+    infer-b2-cyclist-bt3:
+      model: b2_cyclist
+      device_type: beelink_bt3
+      replicas: 1
+    infer-b3-motorcycle-pi4:
+      model: b3_motorcycle
+      device_type: raspberry_pi4
+      replicas: 3
+    infer-b1-general-pi4:
+      model: b1_general
+      device_type: raspberry_pi4
+      replicas: 3
+consumers/c1_navigation/initial_ensemble.yaml:
+  members:
+    - infer-b1-general-pi4
+    - infer-b1-pedestrian-bt3
+    - infer-b2-cyclist-bt3
+consumers/c2_safety/initial_ensemble.yaml:
+  members:
+    - infer-b1-general-pi4
+    - infer-b1-pedestrian-bt3
+    - infer-b2-cyclist-bt3
+consumers/c3_surveillance/initial_ensemble.yaml:
+  members:
+    - infer-b1-general-pi4
+    - infer-b1-pedestrian-bt3
+    - infer-b2-cyclist-bt3

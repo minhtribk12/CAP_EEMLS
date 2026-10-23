@@ -1,0 +1,7 @@
+description: Quick start, CAP on one short daylight day.
+scenario: quick_start
+approaches:
+  cap:
+    approach: cap
+seeds: [0]
+duration_s: 120

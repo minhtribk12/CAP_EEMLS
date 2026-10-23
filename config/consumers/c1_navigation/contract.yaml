@@ -1,0 +1,29 @@
+consumer_id: c1_navigation
+description: Navigation.
+prioritized_classes:
+  - car
+  - truck
+  - bus
+request_rate_per_s: 20.0
+objectives:
+  accuracy_pedestrian:
+    weight: 1.0
+  accuracy_cyclist:
+    weight: 1.0
+  accuracy_motorcycle:
+    weight: 1.0
+  accuracy_car:
+    weight: 4.0
+  accuracy_truck:
+    weight: 3.0
+  accuracy_bus:
+    weight: 3.0
+cost_weight: 1.95
+cost_range_max_per_1k: 30.0
+requirements:
+  - cdm: accuracy_car_truck_bus
+    operator: ">="
+    target_value: 0.8
+feedback:
+  fraction: 0.5
+  delay_intervals: 15

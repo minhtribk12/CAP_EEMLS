@@ -1,0 +1,100 @@
+[project]
+name = "eemls-tools"
+version = "1.0.0"
+description = "Tools: check and render the configuration, deploy the services and run the experiments"
+authors = [
+    { name = "Minh-Tri Nguyen" },
+    { name = "Hong-Linh Truong" },
+]
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11,<3.13"
+
+dependencies = [
+    "eemls[database,approaches,testing] (>=1.0,<2)",
+    "eemls-inference-service (>=1.0,<2)",
+    "eemls-data-hub (>=1.0,<2)",
+    "eemls-consumer (>=1.0,<2)",
+    "eemls-control-plane (>=1.0,<2)",
+    "eemls-observation-service (>=1.0,<2)",
+    "pydantic (>=2.11.7,<3.0.0)",
+    "pyyaml (>=6.0.3,<7.0.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "numpy (>=2.0.0,<3.0.0)",
+    "pillow (>=11.0.0,<13.0.0)",
+    "onnx (>=1.23.0,<2.0.0)",
+    "onnxruntime (>=1.31.0,<2.0.0)",
+]
+
+[project.scripts]
+eemls-config = "eemls_tools.config_command:main"
+eemls-deploy = "eemls_tools.deploy_command:main"
+eemls-exp = "eemls_tools.experiment_command:main"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
+packages = [{ include = "eemls_tools", from = "src" }]
+include = [{ path = "src/eemls_tools/py.typed", format = ["sdist", "wheel"] }]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.3"
+pytest-cov = "^7.1.0"
+ruff = "0.12.12"
+mypy = "^1.14.0"
+types-pyyaml = "^6.0.12"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests", "."]
+addopts = "-ra -q --strict-markers --strict-config --import-mode=importlib"
+xfail_strict = true
+filterwarnings = ["error"]
+markers = [
+    "slow: takes more than a few seconds",
+    "integration: needs a running dependency such as Postgres or the broker",
+    "requires_gpu: needs a CUDA or TensorRT device",
+    "requires_docker: needs a Docker daemon or a cluster",
+]
+
+[tool.ruff]
+extend = "../pyproject.toml"
+src = ["src", "tests", "."]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+"tests/unit/test_edge_login.py" = ["S603", "S607"]
+"tests/unit/test_k3s_scripts.py" = ["S603", "S607"]
+"tests/unit/test_one_host_scripts.py" = ["S603", "S607"]
+"tests/unit/test_edge_models.py" = ["S603", "S607"]
+"tests/unit/test_check_device_answers.py" = ["S603", "S607"]
+"check_device_answers.py" = ["S603", "S607"]
+"swarm_autoscale.py" = ["S603", "S607"]
+"release.py" = ["S603", "S607"]
+"pin.py" = ["S603", "S607"]
+"tests/unit/test_pin.py" = ["S603", "S607"]
+"tests/unit/test_release.py" = ["S603", "S607"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+python_version = "3.11"
+mypy_path = "src:tests:."
+files = ["src", "tests"]
+namespace_packages = true
+explicit_package_bases = true
+strict = true
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = ["onnxruntime", "onnxruntime.*"]
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["src/eemls_tools"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true

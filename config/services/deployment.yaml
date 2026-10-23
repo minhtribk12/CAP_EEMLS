@@ -1,0 +1,23 @@
+image_tags:
+  x86_cpu: cpu-amd64
+  x86_gpu: cuda-amd64
+  arm_cpu: cpu-arm64
+  jetson: jetson
+jetpack_release: 36.4.0
+runtime_memory_mb:
+  x86_cpu: 256
+  x86_gpu: 1024
+  arm_cpu: 256
+  jetson: 1024
+model_memory_factor: 2.0
+service_memory_mb:
+  control_plane: 1024
+  data_hub: 512
+  observation_service: 512
+  consumer: 256
+  broker: 128
+  metrics_database: 1024
+inference_cpu_cores: 0.5
+runtime_classes:
+  x86_gpu: nvidia
+  jetson: nvidia

@@ -1,0 +1,5 @@
+kind: cocktail
+max_ensemble_size: 3
+evaluation_window: 500
+accuracy_target: 0.85
+accuracy_target_range: 0.05

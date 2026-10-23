@@ -1,0 +1,29 @@
+consumer_id: c2_safety
+description: Safety.
+prioritized_classes:
+  - pedestrian
+  - cyclist
+  - motorcycle
+request_rate_per_s: 20.0
+objectives:
+  accuracy_pedestrian:
+    weight: 10.0
+  accuracy_cyclist:
+    weight: 10.0
+  accuracy_motorcycle:
+    weight: 10.0
+  accuracy_car:
+    weight: 3.0
+  accuracy_truck:
+    weight: 3.0
+  accuracy_bus:
+    weight: 3.0
+cost_weight: 5.85
+cost_range_max_per_1k: 30.0
+requirements:
+  - cdm: accuracy_pedestrian_cyclist_motorcycle
+    operator: ">="
+    target_value: 0.8
+feedback:
+  fraction: 0.5
+  delay_intervals: 15

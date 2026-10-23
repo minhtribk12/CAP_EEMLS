@@ -1,0 +1,25 @@
+description: 'Archived option: two-minute periods, twice the unpredictable events, timeline seed 6.'
+scenario: short_periods_seed_6
+approaches:
+  cap:
+    approach: cap
+  cap_star:
+    approach: cap
+    contract: only_general_accuracy
+  cap_minus:
+    approach: cap
+    contract: without_miss_rate
+  scale_reduction:
+    approach: scale_reduction
+  sneakpeek:
+    approach: sneakpeek
+  axiomvision:
+    approach: axiomvision
+  cocktail:
+    approach: cocktail
+  frugalml:
+    approach: frugalml
+  fixed_ensemble:
+    approach: keep_the_ensemble
+seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+duration_s: 7200

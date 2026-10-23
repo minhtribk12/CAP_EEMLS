@@ -1,0 +1,7 @@
+url: http://observation-service:8083
+host: 0.0.0.0
+port: 8083
+request_timeout_ms: 5000
+profile_window_s: 150
+profile_min_labeled_per_class: 20
+profile_min_labeled_overall: 50

@@ -1,0 +1,9 @@
+backend: postgres
+host: postgres
+port: 5432
+database: eemls
+user: eemls
+buffer_rows: 500
+flush_interval_ms: 200
+statement_timeout_ms: 5000
+max_database_connections: 8

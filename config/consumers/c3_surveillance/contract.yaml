@@ -1,0 +1,16 @@
+consumer_id: c3_surveillance
+description: Surveillance.
+prioritized_classes: []
+request_rate_per_s: 20.0
+objectives:
+  general_accuracy:
+    weight: 1.0
+cost_weight: 0.15
+cost_range_max_per_1k: 30.0
+requirements:
+  - cdm: general_accuracy
+    operator: ">="
+    target_value: 0.8
+feedback:
+  fraction: 0.5
+  delay_intervals: 15

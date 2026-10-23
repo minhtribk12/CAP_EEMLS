@@ -1,0 +1,6 @@
+kind: axiomvision
+max_ensemble_size: 3
+evaluation_window: 500
+exploration_alpha: 0.25
+prior_zeta: 1.0
+accuracy_target: 0.85
